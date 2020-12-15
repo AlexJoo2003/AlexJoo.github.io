@@ -1,7 +1,18 @@
+*{
+    /*not selectable*/
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Old versions of Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /* Non-prefixed version, currently supported by Chrome, Edge, Opera and Firefox */
+}
+
 body{
     margin: 0;
     padding: 0;
     overflow: hidden;
+    font-family: Arial, sans-serif;
 }
 
 ::-webkit-scrollbar {
@@ -24,6 +35,20 @@ body{
     align-items: stretch;
 }
 
+header{
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    font-size: 4em;
+}
+
+#info{
+    position: fixed;
+    left: 20px;
+    top: 20px;
+    font-size: 4em;
+    color: #000;
+}
 
 .card_deck{
     background-color: rgb(255, 177, 177);
@@ -54,7 +79,7 @@ body{
     transform: scale(1.1);
 }
 .card_hover{
-    transform: translateY(-100px) translateX(-100px);
+    transform: translateY(-80px) translateX(-20px);
     z-index: 2;
 }
 .card_mousedown{
@@ -72,6 +97,7 @@ img{
 
 .card_name{
     position: absolute;
+    display: flex;
     top: 5px;
     left: 5px;
     width: 100%;
@@ -93,6 +119,35 @@ img{
     font-size: 50px;
 }
 
+.card_desc{
+    position: absolute;
+    display: flex;
+    bottom: -5px;
+    left: 5px;
+    width: 100%;
+
+    background-color: #FFFA;
+    color: #000;
+    font-size: 0px;
+    
+    border-radius: 15px;
+    border-top-left-radius: 0px;
+    border-top-right-radius: 0px;
+    
+    transition: all 0.25s;
+}
+.card_desc_hover{
+    font-size: 1.4em;
+}
+.card_desc span{
+    padding-left: 10px;
+}
+
+.release_date{
+    visibility: hidden;
+}
+
+
 .card_list{
     background-color: rgb(163, 218, 255);
     flex-grow: 1;
@@ -110,14 +165,6 @@ img{
     padding-left: 30px;
 
     transition: all 0.2s;
-
-    /*not selectable*/
-    -webkit-touch-callout: none; /* iOS Safari */
-    -webkit-user-select: none; /* Safari */
-     -khtml-user-select: none; /* Konqueror HTML */
-       -moz-user-select: none; /* Old versions of Firefox */
-        -ms-user-select: none; /* Internet Explorer/Edge */
-            user-select: none; /* Non-prefixed version, currently supported by Chrome, Edge, Opera and Firefox */
 }
 .card_link_mouseover{
     background-color: #0001;

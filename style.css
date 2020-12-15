@@ -4,6 +4,19 @@ body{
     overflow: hidden;
 }
 
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+::-webkit-scrollbar-thumb {
+  background: #888;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
 .container{
     display: flex;
     width: 100vw;
@@ -84,6 +97,8 @@ img{
     background-color: rgb(163, 218, 255);
     flex-grow: 1;
     font-size: 2em;
+    overflow: auto;
+    overflow-x: hidden;
 }
 .card_list ul{
     list-style-type: none;

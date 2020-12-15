@@ -104,15 +104,16 @@ function card_link_mouseup(card){
     top_card = new_card;
     top_card.classList.add("top_card");
     top_card.classList.remove("card");
-
+    
     old_card_link = document.querySelector("#"+top_card.id+"_link");
     new_card_link = old_card_link.cloneNode(true);
     old_card_link.parentNode.replaceChild(new_card_link, old_card_link);
     top_card_link = new_card_link;
     top_card_link.classList.add("top_card_link");
-
+    
     card_link_mouseout(top_card_link);
     setup_top_card();
+    top_card_mouseover();
 
     setup_cards();
 }

@@ -1,6 +1,10 @@
 let card_deck = [...document.querySelectorAll("article")];
 let top_card = card_deck[card_deck.length - 1];
+top_card.classList.remove("card");
+top_card.classList.add("top_card");
 let top_card_link = document.querySelector("#"+top_card.id+"_link");
+top_card_link.classList.remove("card_link")
+top_card_link.classList.add("top_card_link");
 
 function setup_top_card(){
     top_card.addEventListener("mouseover", top_card_mouseover);
@@ -17,6 +21,8 @@ function remove_top_card(){
     new_card.classList.remove("top_card");
     new_card.classList.add("card");
     top_card.parentNode.replaceChild(new_card, top_card);
+    top_card_link.classList.remove("top_card_link");
+    top_card_link.classList.add("card_link");
     let new_link = top_card_link.cloneNode(true);
     top_card_link.parentNode.replaceChild(new_link, top_card_link);
     top_card = false;
@@ -25,11 +31,13 @@ function remove_top_card(){
 function top_card_mouseover(){
     top_card.classList.add("top_card_hover");
     top_card.querySelector(".card_name").classList.add("card_name_hover");
+    top_card_link.classList.add("top_card_link_mouseover");
 }
 function top_card_mouseout(){
     top_card.classList.remove("top_card_hover");
     top_card.querySelector(".card_name").classList.remove("card_name_hover");
     top_card.classList.remove("top_card_mousedown");
+    top_card_link.classList.remove("top_card_link_mouseover");
 }
 function top_card_mousedown(){
     top_card.classList.add("top_card_mousedown");
@@ -63,6 +71,7 @@ function card_link_mouseover(card_link){
     let card = document.querySelector("#"+card_link.id.replace("_link", ""));
     card.querySelector(".card_name").classList.add("card_name_hover");
     card.classList.add("card_hover");
+    document.querySelector("#"+card.id+"_link").classList.add("card_link_mouseover");
 }
 function card_link_mouseout(card_link){
     let card = document.querySelector("#"+card_link.id.replace("_link", ""));
@@ -70,14 +79,18 @@ function card_link_mouseout(card_link){
     card.classList.remove("card_hover");
     card.classList.remove("card_mousedown");
     top_card.classList.remove("top_card_disappear");
+    document.querySelector("#"+card.id+"_link").classList.remove("card_link_mouseover");
+    document.querySelector("#"+card.id+"_link").classList.remove("card_link_mousedown");
 }
 function card_link_mousedown(card){
     card.classList.add("card_mousedown");
     top_card.classList.add("top_card_disappear");
+    document.querySelector("#"+card.id+"_link").classList.add("card_link_mousedown");
 }
 function card_link_mouseup(card){
     card.classList.remove("card_mousedown");
     top_card.classList.remove("top_card_disappear");
+    document.querySelector("#"+card.id+"_link").classList.remove("card_link_mousedown");
 
     remove_top_card();
 
@@ -96,6 +109,7 @@ function card_link_mouseup(card){
     new_card_link = old_card_link.cloneNode(true);
     old_card_link.parentNode.replaceChild(new_card_link, old_card_link);
     top_card_link = new_card_link;
+    top_card_link.classList.add("top_card_link");
 
     card_link_mouseout(top_card_link);
     setup_top_card();

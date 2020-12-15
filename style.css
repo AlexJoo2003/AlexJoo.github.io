@@ -89,7 +89,7 @@ img{
     list-style-type: none;
     padding: 0;
 }
-.card_list li{
+.card_link, .top_card_link{
     cursor: pointer;
     padding: 10px;
     padding-left: 30px;
@@ -104,10 +104,14 @@ img{
         -ms-user-select: none; /* Internet Explorer/Edge */
             user-select: none; /* Non-prefixed version, currently supported by Chrome, Edge, Opera and Firefox */
 }
-.card_list li:hover{
+.card_link_mouseover{
     background-color: #0001;
 }
-.card_list li:active{
+.card_link_mousedown, .top_card_link{
     background-color: #000A;
     color: #EEE;
+}
+.top_card_link_mouseover{
+    background-color: #000C;
+    color: #FFF;
 }

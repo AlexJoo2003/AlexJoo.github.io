@@ -5,8 +5,8 @@ top_card.classList.add("top_card");
 var top_card_link = document.querySelector("#"+top_card.id+"_link");
 top_card_link.classList.remove("card_link")
 top_card_link.classList.add("top_card_link");
-
 var mousedown_card = false;
+var span = document.querySelector("#info");
 
 function setup_top_card(){
     top_card.addEventListener("mouseover", top_card_mouseover);
@@ -34,14 +34,13 @@ function remove_top_card(){
 function top_card_mouseover(){
     top_card.classList.add("top_card_hover");
     top_card.querySelector(".card_name").classList.add("card_name_hover");
-    // top_card.querySelector(".card_desc").classList.add("card_desc_hover");
 
     mousedown_card = true;
     setTimeout(function(){
         if (mousedown_card){
             top_card.querySelector(".card_desc").classList.add("card_desc_hover");
         }
-    }, 1000);
+    }, 500);
 }
 function top_card_mouseout(){
     mousedown_card = false;
@@ -105,7 +104,7 @@ function card_link_mousedown(card){
         if (mousedown_card){
             card.querySelector(".card_desc").classList.add("card_desc_hover");
         }
-    }, 1000);
+    }, 500);
     card.classList.add("card_mousedown");
     top_card.classList.add("top_card_disappear");
     document.querySelector("#"+card.id+"_link").classList.add("card_link_mousedown");
@@ -115,13 +114,13 @@ function card_link_mouseup(card){
     card.classList.remove("card_mousedown");
     top_card.classList.remove("top_card_disappear");
     document.querySelector("#"+card.id+"_link").classList.remove("card_link_mousedown");
-
+    
     remove_top_card();
-
+    
     let old_card_link = document.querySelector("#"+card.id+"_link");
     let new_card_link = old_card_link.cloneNode(true);
     old_card_link.parentNode.replaceChild(new_card_link, old_card_link);
-
+    
     let new_card = card.cloneNode(true);
     card.parentNode.appendChild(new_card);
     card.parentNode.removeChild(card);
@@ -141,42 +140,37 @@ function card_link_mouseup(card){
     setup_cards();
 }
 
-var span = document.querySelector("#info");
 function RNG(){
-    return Math.floor((Math.random() * 60) + 10);
+    return Math.floor((Math.random() * 40) + 20);
 }
 function deleteText(){
     let text = span.textContent;
     let time = 20;
-    let decrease = 5;
     for (i = 0; i < 10000; i++){
         clearTimeout(i);
     }
     for (i = 0; i < text.length; i++){
-        if (time < 0){
-            time = 0;
-            decrease = 0;
-        }
         setTimeout(function(){
             span.textContent = span.textContent.slice(0, -1);
         }, time);
-        decrease += 5;
-        time += 100 - decrease;
+        time += 20;
     }
     return time;
 }
 function writeText(text){
-    text = text.split("");
-    for (i = 0; i < 10000; i++){
-        clearTimeout(i);
-    }
-    let time = 100 + deleteText();
-    for (i = 0; i < text.length; i++){
-        let letter = text[i];
-        setTimeout(function(){
-            span.textContent += letter;
-        }, time);
-        time += RNG();
+    if (span.textContent != text){
+        text = text.split("");
+        for (i = 0; i < 10000; i++){
+            clearTimeout(i);
+        }
+        let time = 100 + deleteText();
+        for (i = 0; i < text.length; i++){
+            let letter = text[i];
+            setTimeout(function(){
+                span.textContent += letter;
+            }, time);
+            time += RNG();
+        }
     }
 }
 

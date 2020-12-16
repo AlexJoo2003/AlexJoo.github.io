@@ -17,6 +17,7 @@ function setup_top_card(){
     top_card_link.addEventListener("mousedown", top_card_mousedown);
     top_card_link.addEventListener("mouseup", top_card_mouseup);
     top_card_link.addEventListener("mouseout", top_card_mouseout);
+    writeText(top_card.querySelector(".release_date").textContent);
 }
 function remove_top_card(){
     let new_card = top_card.cloneNode(true);
@@ -37,7 +38,6 @@ function top_card_mouseover(){
 
     mousedown_card = true;
     setTimeout(function(){
-        console.log(mousedown_card);
         if (mousedown_card){
             top_card.querySelector(".card_desc").classList.add("card_desc_hover");
         }
@@ -85,6 +85,7 @@ function card_link_mouseover(card_link){
     card.querySelector(".card_name").classList.add("card_name_hover");
     card.classList.add("card_hover");
     document.querySelector("#"+card.id+"_link").classList.add("card_link_mouseover");
+    writeText(card.querySelector(".release_date").textContent);
 }
 function card_link_mouseout(card_link){
     let card = document.querySelector("#"+card_link.id.replace("_link", ""));
@@ -95,6 +96,7 @@ function card_link_mouseout(card_link){
     document.querySelector("#"+card.id+"_link").classList.remove("card_link_mouseover");
     document.querySelector("#"+card.id+"_link").classList.remove("card_link_mousedown");
     card.querySelector(".card_desc").classList.remove("card_desc_hover");
+    writeText(top_card.querySelector(".release_date").textContent);
 }
 function card_link_mousedown(card){
     mousedown_card = true;
@@ -137,6 +139,45 @@ function card_link_mouseup(card){
     setup_top_card();
     top_card_mouseover();
     setup_cards();
+}
+
+var span = document.querySelector("#info");
+function RNG(){
+    return Math.floor((Math.random() * 60) + 10);
+}
+function deleteText(){
+    let text = span.textContent;
+    let time = 20;
+    let decrease = 5;
+    for (i = 0; i < 10000; i++){
+        clearTimeout(i);
+    }
+    for (i = 0; i < text.length; i++){
+        if (time < 0){
+            time = 0;
+            decrease = 0;
+        }
+        setTimeout(function(){
+            span.textContent = span.textContent.slice(0, -1);
+        }, time);
+        decrease += 5;
+        time += 100 - decrease;
+    }
+    return time;
+}
+function writeText(text){
+    text = text.split("");
+    for (i = 0; i < 10000; i++){
+        clearTimeout(i);
+    }
+    let time = 100 + deleteText();
+    for (i = 0; i < text.length; i++){
+        let letter = text[i];
+        setTimeout(function(){
+            span.textContent += letter;
+        }, time);
+        time += RNG();
+    }
 }
 
 setup_top_card();

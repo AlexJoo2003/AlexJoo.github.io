@@ -177,3 +177,11 @@ img{
     background-color: #000C;
     color: #FFF;
 }
+.date{
+    position: absolute;
+    top: 20px;
+    left: 20px;
+}
+.invicible{
+    opacity: 0;
+}

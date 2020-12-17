@@ -59,7 +59,7 @@ function top_card_mouseup(){
     top_card.classList.remove("top_card_mousedown");
     top_card.querySelector(".card_name").classList.add("card_name_hover");
     top_card.querySelector(".card_desc").classList.add("card_desc_hover");
-    window.location.href = "http://www.w3schools.com";
+    window.location.href = top_card.querySelector(".link").textContent;
 }
 
 function setup_cards(){

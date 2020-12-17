@@ -190,3 +190,6 @@ img{
     top: 20px;
     left: 20px;
 }
+.link{
+    visibility: hidden;
+}

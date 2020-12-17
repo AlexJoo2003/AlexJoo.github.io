@@ -34,13 +34,9 @@ function remove_top_card(){
 function top_card_mouseover(){
     top_card.classList.add("top_card_hover");
     top_card.querySelector(".card_name").classList.add("card_name_hover");
+    top_card.querySelector(".card_desc").classList.add("card_desc_hover");
 
     mousedown_card = true;
-    setTimeout(function(){
-        if (mousedown_card){
-            top_card.querySelector(".card_desc").classList.add("card_desc_hover");
-        }
-    }, 500);
 }
 function top_card_mouseout(){
     mousedown_card = false;

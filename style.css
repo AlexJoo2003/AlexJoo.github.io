@@ -8,11 +8,20 @@
             user-select: none; /* Non-prefixed version, currently supported by Chrome, Edge, Opera and Firefox */
 }
 
+/* ! Colors:
+white = #FCFDFD
+black = #293131
+white2 = #CACBCD
+accent = #7DAAB7
+*/
+
 body{
     margin: 0;
     padding: 0;
     overflow: hidden;
     font-family: Arial, sans-serif;
+    background-color: #FCFDFD;
+    color: #293131;
 }
 
 ::-webkit-scrollbar {
@@ -47,11 +56,10 @@ header{
     left: 20px;
     top: 20px;
     font-size: 4em;
-    color: #000;
+    color: #29313155;
 }
 
 .card_deck{
-    background-color: rgb(255, 177, 177);
     flex-grow: 3;
     display: flex;
     align-items: center;
@@ -92,7 +100,7 @@ img{
     height: 100%;
     object-fit: cover;
     border-radius: 20px;
-    border: 5px solid #000;
+    border: 5px solid #293131;
 }
 
 .card_name{
@@ -102,8 +110,8 @@ img{
     left: 5px;
     width: 100%;
     
-    background-color: #0009;
-    color: #FFF;
+    background-color: #29313199;
+    color: #CACBCD;
     font-size: 0px;
     
     border-radius: 15px;
@@ -126,8 +134,8 @@ img{
     left: 5px;
     width: 100%;
 
-    background-color: #FFFA;
-    color: #000;
+    background-color: #CACBCDAA;
+    color: #293131;
     font-size: 0px;
     
     border-radius: 15px;
@@ -149,7 +157,7 @@ img{
 
 
 .card_list{
-    background-color: rgb(163, 218, 255);
+    background-color: #CACBCD;
     flex-grow: 1;
     font-size: 2em;
     overflow: auto;
@@ -167,15 +175,15 @@ img{
     transition: all 0.2s;
 }
 .card_link_mouseover{
-    background-color: #0001;
+    background-color: #29313111;
 }
 .card_link_mousedown, .top_card_link{
-    background-color: #000A;
-    color: #EEE;
+    background-color: #293131AA;
+    color: #CACBCD;
 }
 .top_card_link_mouseover{
-    background-color: #000C;
-    color: #FFF;
+    background-color: #293131;
+    color: #FCFDFD;
 }
 .date{
     position: absolute;

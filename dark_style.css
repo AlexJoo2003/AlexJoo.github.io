@@ -1,0 +1,53 @@
+/* ! Colors
+black = #000d1a
+accent = #001a33
+white = #f0ece2
+*/
+
+body{
+    background-color: #000d1a;
+    color: #f0ece255;
+}
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+::-webkit-scrollbar-thumb {
+  background: #888;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+#info{
+    color: #f0ece255;
+}
+img{
+    border: 5px solid #001a33;
+}
+.card_name, .card_desc{
+    background-color: #000d1a99;
+    color: #f0ece2;
+}
+/* .card_desc{
+    background-color: #CACBCDAA;
+    color: #293131;
+} */
+.card_list{
+    background-color: #001a33;
+}
+.card_link_mouseover{
+    background-color: #FFFFFF22;
+}
+.card_link_mousedown, .top_card_link{
+    background-color: #FFFFFF33;
+    color: #f0ece2CC;
+}
+.top_card_link_mouseover{
+    background-color: #FFFFFF44;
+    color: #f0ece2;
+}
+.container > header{
+    color: #f0ece2AA;
+}

@@ -9,6 +9,7 @@ var mousedown_card = false;
 var span = document.querySelector("#info");
 
 function setup_top_card(){
+    top_card.querySelector(".card_name").classList.add("card_name_hover");
     top_card.addEventListener("mouseover", top_card_mouseover);
     top_card.addEventListener("mouseout", top_card_mouseout);
     top_card.addEventListener("mousedown", top_card_mousedown);
@@ -20,6 +21,7 @@ function setup_top_card(){
     writeText(top_card.querySelector(".release_date").textContent);
 }
 function remove_top_card(){
+    top_card.querySelector(".card_name").classList.remove("card_name_hover");
     let new_card = top_card.cloneNode(true);
     new_card.classList.remove("top_card");
     new_card.classList.add("card");
@@ -33,25 +35,31 @@ function remove_top_card(){
 }
 function top_card_mouseover(){
     top_card.classList.add("top_card_hover");
-    top_card.querySelector(".card_name").classList.add("card_name_hover");
     top_card.querySelector(".card_desc").classList.add("card_desc_hover");
+    top_card_link.classList.add("top_card_link_mouseover");
 
     mousedown_card = true;
 }
 function top_card_mouseout(){
     mousedown_card = false;
     top_card.classList.remove("top_card_hover");
-    top_card.querySelector(".card_name").classList.remove("card_name_hover");
+    
     top_card.querySelector(".card_desc").classList.remove("card_desc_hover");
+    top_card.querySelector(".card_name").classList.add("card_name_hover");
     top_card.classList.remove("top_card_mousedown");
     top_card_link.classList.remove("top_card_link_mouseover");
 }
 function top_card_mousedown(){
     top_card.classList.add("top_card_mousedown");
     top_card.querySelector(".card_desc").classList.add("card_desc_hover");
+    top_card.querySelector(".card_desc").classList.remove("card_desc_hover");
+    top_card.querySelector(".card_name").classList.remove("card_name_hover");
 }
 function top_card_mouseup(){
     top_card.classList.remove("top_card_mousedown");
+    top_card.querySelector(".card_name").classList.add("card_name_hover");
+    top_card.querySelector(".card_desc").classList.add("card_desc_hover");
+    window.location.href = "http://www.w3schools.com";
 }
 
 function setup_cards(){

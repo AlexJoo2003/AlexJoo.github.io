@@ -157,7 +157,7 @@ img{
 
 
 .card_list{
-    background-color: #CACBCD;
+    background-color: #00000010;
     flex-grow: 1;
     font-size: 2em;
     overflow: auto;

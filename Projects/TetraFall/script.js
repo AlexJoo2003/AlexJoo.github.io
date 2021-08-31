@@ -364,14 +364,6 @@ function updateScore(){
     else{
         tetro_fall_time = new_tetro_fall_time;
     }
-    console.log(tetro_fall_time);
-    // var new_tetro_fall_time = Math.round(tetro_fall_time - score*score_time_multiplyer);
-    // if (new_tetro_fall_time<=tetro_min_fall_time){
-    //     tetro_fall_time = tetro_min_fall_time;
-    // }
-    // else{
-    //     tetro_fall_time = new_tetro_fall_time;
-    // }
 }
 
 function findCells(){
@@ -396,9 +388,7 @@ function findCells(){
             }
         }
     });
-    cells.sort()
-    // return cells.length;
-    // console.log(cells, cells.length);
+    cells = cells.sort(function(x,y){return x - y;});
 }
 
 $("body").keydown(function(e){

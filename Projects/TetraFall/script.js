@@ -100,7 +100,7 @@ var tetros = [
 
 var tetro_list = [];
 var current_tetro = [];
-var squares = [];
+var cells = [];
 
 $("document").ready(function (){
     makeGrid();
@@ -313,11 +313,11 @@ function moveTetro(direction){
 }
 
 function checkLine(){
-    findBigTetro();
+    findCells();
     var line_counter = 0;
     for(var i=0; i<height; i++){
         var line_sum = 0;
-        squares.forEach(function(box) {
+        cells.forEach(function(box) {
             if (box[1] == i){
                 line_sum++;
             }
@@ -332,8 +332,8 @@ function checkLine(){
                     unRender(x,y);
                 }
             });
-            findBigTetro();
-            var temp_tetro = squares.slice().reverse();
+            findCells();
+            var temp_tetro = cells.slice().reverse();
             temp_tetro.forEach(box => {
                 if (box[1] < i){
                     var id = "#"+box[0].toString() + box[1].toString();
@@ -374,8 +374,8 @@ function updateScore(){
     // }
 }
 
-function findBigTetro(){
-    squares = [];
+function findCells(){
+    cells = [];
     $(".box").each(function(){
         var x = parseInt($(this).attr("id")[0]);
         var y = parseInt($(this).attr("id").slice(1, $(this).attr("id").length));
@@ -392,13 +392,13 @@ function findBigTetro(){
                 }
             });
             if(!is_current_tetro){
-                squares.push(box);
+                cells.push(box);
             }
         }
     });
-    squares.sort()
-    // return squares.length;
-    // console.log(squares, squares.length);
+    cells.sort()
+    // return cells.length;
+    // console.log(cells, cells.length);
 }
 
 $("body").keydown(function(e){

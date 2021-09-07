@@ -3,12 +3,12 @@ var height = 20;
 var x_offset = Math.round(width/2);
 var tetro_max_fall_time = 1500;
 var tetro_fall_time = tetro_max_fall_time;
-var tetro_min_fall_time = 100;
+var tetro_min_fall_time = 500;
 var tetro_fall_timeout;
 var score = 0;
 var single_line_score = 10;
 var tetra_line_score = single_line_score*8;
-var score_time_multiplyer = 5;
+var score_time_multiplyer = 1;
 var spare_tetro = false;
 var game_over = false;
 var quickFall = false;
@@ -388,7 +388,7 @@ function findCells(){
             }
         }
     });
-    cells = cells.sort(function(x,y){return x - y;});
+    cells.sort(function(x,y){return x - y;});
 }
 
 $("body").keydown(function(e){

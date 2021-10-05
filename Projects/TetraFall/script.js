@@ -12,6 +12,7 @@ var score_time_multiplyer = 1;
 var spare_tetro = false;
 var game_over = false;
 var quickFall = false;
+var mute = false;
 
 
 var tetros = [
@@ -174,8 +175,7 @@ function spawnTetro(){
         var id = "#"+x.toString() + y.toString();
         if($(id).css("background-color") != ("rgb(34, 34, 34)") && !game_over){
             game_over = true;
-            var audio = new Audio("sounds/mwapmwap.mp3");
-            audio.play();
+            playSound("sounds/mwapmwap.mp3");
             clearTimeout(tetro_fall_timeout);
             spawn = false;
             setTimeout(function(){
@@ -267,9 +267,8 @@ function moveTetro(direction){
         var x = current_tetro.rotations[current_tetro.current_rotation][i][0] + test_offset[0];
         var y = current_tetro.rotations[current_tetro.current_rotation][i][1] + test_offset[1];
         var id = "#"+x.toString() + y.toString();
-        if(y >= height){ // if tetro reached the bottom, next tetro
-            var audio = new Audio("sounds/pam.mp3");
-            audio.play();
+        if(y >= height){ // if tetro reached the bottom, next tetr o
+            playSound("sounds/pam.mp3");
             spawnTetro();
             checkLine();
             change_offset = false;
@@ -291,8 +290,7 @@ function moveTetro(direction){
             });
             if(!allow){
                 if(direction == "down"){ // fell on colored square
-                    var audio = new Audio("sounds/pam.mp3");
-                    audio.play();
+                    playSound("sounds/pam.mp3");
                     spawnTetro();
                     checkLine();
                     change_offset = false;
@@ -345,8 +343,7 @@ function checkLine(){
         }
     }
     if(line_counter == 4){
-        var audio = new Audio("sounds/tada.mp3");
-        audio.play();
+        playSound("sounds/tada.mp3");
         score += tetra_line_score;
     }
     else{
@@ -363,6 +360,13 @@ function updateScore(){
     }
     else{
         tetro_fall_time = new_tetro_fall_time;
+    }
+}
+
+function playSound(path){
+    if(!mute){
+        var audio = new Audio(path);
+        audio.play();
     }
 }
 
@@ -390,6 +394,21 @@ function findCells(){
     });
     cells.sort(function(x,y){return x - y;});
 }
+
+$("#toggle-mute").click(function(){
+    if(mute){
+        $(this).text("Mute");
+    }
+    else{
+        $(this).text("Unmute");
+    }
+    mute = !mute;
+});
+$("#toggle-mute").keyup(function(e){
+    if(e.keyCode = 32){
+        e.preventDefault();
+    }
+});
 
 $("body").keydown(function(e){
     if(["Space","ArrowUp","ArrowDown","ArrowLeft","ArrowRight"].indexOf(e.code) > -1) {
